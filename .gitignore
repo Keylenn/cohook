@@ -1,9 +1,7 @@
 node_modules
 
 lib
-/types
 
 *.log
-.cache
 
-.history
+.DS_Store
