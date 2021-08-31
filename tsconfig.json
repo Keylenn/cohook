@@ -4,7 +4,7 @@
     "jsx": "react",
     "baseUrl": ".",
     "declaration": true,
-    "declarationDir": "./types",
+    "declarationDir": "lib/types",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",

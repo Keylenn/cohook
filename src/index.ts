@@ -1,1 +1,1 @@
-const a = 1
+export { default as createContainer } from "./createContainer"
