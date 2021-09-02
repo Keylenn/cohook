@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.11](https://github.com/Keylenn/cohook/compare/v0.5.10...v0.5.11) (2021-09-02)
+
+
+### ✨ Features | 新功能
+
+* add default export api ([73557c6](https://github.com/Keylenn/cohook/commit/73557c6e06858fb36ceeddab7f9481be982b2d67))
+
 ### [0.5.10](https://github.com/Keylenn/cohook/compare/v0.5.9...v0.5.10) (2021-09-02)
 
 
