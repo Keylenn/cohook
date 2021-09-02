@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.10](https://github.com/Keylenn/cohook/compare/v0.5.9...v0.5.10) (2021-09-02)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* Update TargetEffectMap in real time ([cd95628](https://github.com/Keylenn/cohook/commit/cd956288712cb253cffad9139a6e7cda349c91c6))
+
 ### [0.5.9](https://github.com/Keylenn/cohook/compare/v0.5.8...v0.5.9) (2021-09-01)
 
 
