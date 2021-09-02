@@ -201,7 +201,24 @@ class Container<T> {
         const prop = _changedPropPath.pop()
         const target = _get(wrappedDataRef, _changedPropPath, wrappedDataRef)
         const targetEffectMap = this.getTargetEffectMap(target)
-        const propEffSet = prop && targetEffectMap?.get(prop)
+        const propEffSet = prop !== undefined && targetEffectMap?.get(prop)
+
+        // Update TargetEffectMap in real time
+        if (targetEffectMap) {
+          const nextTarget = _get(
+            nextWrappedDataRef,
+            _changedPropPath,
+            nextWrappedDataRef
+          )
+          const effectHandler = () => {
+            this.updateTargetEffectMap({
+              prevTarget: target,
+              nextTarget,
+              nextTargetMap: targetEffectMap,
+            })
+          }
+          this[PENDING_TRIGGER_EFFECT_SET].add(effectHandler)
+        }
 
         length -= 1
         if (!propEffSet) continue
@@ -219,22 +236,6 @@ class Container<T> {
             if (eff?.hasSubProp === false && eff?.triggerHook)
               this[PENDING_TRIGGER_EFFECT_SET].add(eff.triggerHook)
           })
-        }
-
-        if (targetEffectMap) {
-          const nextTarget = _get(
-            nextWrappedDataRef,
-            _changedPropPath,
-            nextWrappedDataRef
-          )
-          const effectHandler = () => {
-            this.updateTargetEffectMap({
-              prevTarget: target,
-              nextTarget,
-              nextTargetMap: targetEffectMap,
-            })
-          }
-          this[PENDING_TRIGGER_EFFECT_SET].add(effectHandler)
         }
       }
     }
