@@ -1,1 +1,4 @@
-export { default as createContainer } from "./createContainer"
+import createContainer from "./createContainer"
+
+export { createContainer }
+export default createContainer
