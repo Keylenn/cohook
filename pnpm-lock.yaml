@@ -13,6 +13,7 @@ specifiers:
   '@types/jest': ^27.0.1
   '@types/lodash': ^4.14.172
   '@types/react': ^17.0.19
+  '@types/react-dom': ^17.0.9
   '@typescript-eslint/eslint-plugin': ^4.29.3
   '@typescript-eslint/parser': ^4.29.3
   babel-eslint: 10.1.0
@@ -31,6 +32,7 @@ specifiers:
   lodash: ^4.17.21
   prettier: ^2.3.2
   react: ^17.0.2
+  react-dom: ^17.0.2
   react-test-renderer: ^17.0.2
   rollup: ^2.33.2
   rollup-plugin-babel: ^4.4.0
@@ -52,10 +54,11 @@ devDependencies:
   '@babel/preset-typescript': 7.15.0_@babel+core@7.15.0
   '@commitlint/cli': 13.1.0
   '@commitlint/config-conventional': 13.1.0
-  '@testing-library/react': 12.0.0_react@17.0.2
+  '@testing-library/react': 12.0.0_react-dom@17.0.2+react@17.0.2
   '@types/jest': 27.0.1
   '@types/lodash': 4.14.172
   '@types/react': 17.0.19
+  '@types/react-dom': 17.0.9
   '@typescript-eslint/eslint-plugin': 4.29.3_73d346f58d55eb09bba55f8289261427
   '@typescript-eslint/parser': 4.29.3_eslint@7.21.0+typescript@4.4.2
   babel-eslint: 10.1.0_eslint@7.21.0
@@ -72,6 +75,7 @@ devDependencies:
   lint-staged: 10.5.4
   prettier: 2.3.2
   react: 17.0.2
+  react-dom: 17.0.2_react@17.0.2
   react-test-renderer: 17.0.2_react@17.0.2
   rollup: 2.56.3
   rollup-plugin-babel: 4.4.0_@babel+core@7.15.0+rollup@2.56.3
@@ -1793,7 +1797,7 @@ packages:
       pretty-format: 27.1.0
     dev: true
 
-  /@testing-library/react/12.0.0_react@17.0.2:
+  /@testing-library/react/12.0.0_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-sh3jhFgEshFyJ/0IxGltRhwZv2kFKfJ3fN1vTZ6hhMXzz9ZbbcTgmDYM4e+zJv+oiVKKEWZPyqPAh4MQBI65gA==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1803,6 +1807,7 @@ packages:
       '@babel/runtime': 7.15.3
       '@testing-library/dom': 8.2.0
       react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: true
 
   /@tootallnate/once/1.1.2:
@@ -1910,6 +1915,12 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
+    dev: true
+
+  /@types/react-dom/17.0.9:
+    resolution: {integrity: sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==}
+    dependencies:
+      '@types/react': 17.0.19
     dev: true
 
   /@types/react/17.0.19:
@@ -6087,6 +6098,17 @@ packages:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
       safe-buffer: 5.2.1
+    dev: true
+
+  /react-dom/17.0.2_react@17.0.2:
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
+    peerDependencies:
+      react: 17.0.2
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 17.0.2
+      scheduler: 0.20.2
     dev: true
 
   /react-is/16.13.1:

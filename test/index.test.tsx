@@ -1,5 +1,5 @@
 import React from "react"
-import { render, fireEvent } from "@testing-library/react"
+import { render, fireEvent, getByTestId } from "@testing-library/react"
 import createContainer from "../src"
 
 interface Todo {
@@ -9,10 +9,11 @@ interface Todo {
 }
 
 describe("nestedDataChange", () => {
-  let container: ReturnType<typeof createContainer>
+  let todosContainer: ReturnType<typeof createContainer>
   let nextTodoId: number
   let addTodoActionRenderCount: number
   let todosRenderCount: number
+  let firstTodoTextRenderCount: number
 
   const AddTodo = () => {
     addTodoActionRenderCount += 1
@@ -24,7 +25,7 @@ describe("nestedDataChange", () => {
           if (!inputRef.current.value.trim()) {
             return
           }
-          container.commit((draft: any) => {
+          todosContainer.commit((draft: any) => {
             nextTodoId += 1
             draft.current.push({
               id: nextTodoId,
@@ -35,23 +36,26 @@ describe("nestedDataChange", () => {
           inputRef.current.value = ""
         }}
       >
-        <input ref={inputRef} />
-        <button type="submit">Add Todo</button>
+        <input data-testid="add-input" ref={inputRef} />
+        <button type="submit" data-testid="add-btn">
+          Add Todo
+        </button>
       </form>
     )
   }
 
   const TodoList = () => {
     todosRenderCount += 1
-    const todoList = container.useMapDataToState() as any[]
+    const todoList = todosContainer.useMapDataToState() as any[]
     return (
       <ul>
-        {todoList.map((item: any) => (
+        {todoList.map((item: any, idx) => (
           <li
             key={item.id}
+            data-testid={`li-${idx + 1}`}
             onClick={() => {
               const { id } = item
-              container.commit((draft: any) => {
+              todosContainer.commit((draft: any) => {
                 draft.current = draft.current.map((todo: any) =>
                   todo.id === id
                     ? { ...todo, completed: !todo.completed }
@@ -71,25 +75,126 @@ describe("nestedDataChange", () => {
     )
   }
 
+  const FirstTodo = () => {
+    firstTodoTextRenderCount += 1
+    const firstTodo = todosContainer.useMapDataToState((data: any) => data[0])
+    return <span>{firstTodo.text}</span>
+  }
+
+  const DataContainer = () => {
+    const spanRef: any = React.useRef(null)
+    return (
+      <>
+        <button
+          data-testid="get-first-text-btn"
+          onClick={() => {
+            const firstTodoText = (todosContainer as any)?.getData()?.[0]?.text
+            spanRef.current.innerHTML = firstTodoText
+          }}
+        >
+          getFirstTodoText
+        </button>
+        <button
+          data-testid="change-first-text-btn"
+          onClick={() => {
+            todosContainer.commit((draft: any) => {
+              draft.current[0].text = "code"
+            })
+          }}
+        >
+          changeFirstTodoText
+        </button>
+        <span data-testid="first-todo-text" ref={spanRef} />
+      </>
+    )
+  }
+
+  const App = () => {
+    return (
+      <>
+        <AddTodo />
+        <TodoList />
+        <FirstTodo />
+        <DataContainer />
+      </>
+    )
+  }
+
   beforeEach(() => {
     nextTodoId = 0
     addTodoActionRenderCount = 0
     todosRenderCount = 0
-    container = createContainer<Todo[]>([])
+    firstTodoTextRenderCount = 0
+    todosContainer = createContainer<Todo[]>([
+      {
+        id: 0,
+        text: "eat",
+        completed: false,
+      },
+    ])
   })
 
   test("first render", () => {
-    const App = () => (
-      <>
-        <AddTodo />
-        <TodoList />
-      </>
-    )
-
-    render(<App />)
-
+    const { container } = render(<App />)
     expect(nextTodoId).toBe(0)
+    expect(addTodoActionRenderCount).toBe(1)
     expect(todosRenderCount).toBe(1)
+    expect(firstTodoTextRenderCount).toBe(1)
+    expect(container.querySelectorAll("li").length).toBe(1)
+    expect(getByTestId(container, "li-1").textContent).toBe("eat")
+  })
+
+  test("add todo", () => {
+    const { container } = render(<App />)
+    const input = getByTestId(container, "add-input") as HTMLInputElement
+    input.value = "play"
+    const addBtn = getByTestId(container, "add-btn")
+    fireEvent.click(addBtn!)
+
+    expect(nextTodoId).toBe(1)
+    expect(addTodoActionRenderCount).toBe(1)
+    expect(todosRenderCount).toBe(2)
+    expect(firstTodoTextRenderCount).toBe(1)
+    expect(container.querySelectorAll("li").length).toBe(2)
+    expect(getByTestId(container, "li-2").textContent).toBe("play")
+  })
+
+  test("toggle todo", () => {
+    const { container } = render(<App />)
+    const li1 = getByTestId(container, "li-1")
+    fireEvent.click(li1!)
+
+    expect(addTodoActionRenderCount).toBe(1)
+    expect(todosRenderCount).toBe(2)
+    expect(firstTodoTextRenderCount).toBe(2)
+    expect(container.querySelectorAll("li").length).toBe(1)
+    expect(li1.style.textDecoration).toBe("line-through")
+  })
+
+  test("get first todo text", () => {
+    const { container } = render(<App />)
+    const getBtn = getByTestId(container, "get-first-text-btn")
+    fireEvent.click(getBtn!)
+
+    expect(addTodoActionRenderCount).toBe(1)
     expect(todosRenderCount).toBe(1)
+    expect(firstTodoTextRenderCount).toBe(1)
+    expect(container.querySelectorAll("li").length).toBe(1)
+    expect(getByTestId(container, "first-todo-text").textContent).toBe("eat")
+  })
+
+  test("change first todo text", () => {
+    const { container } = render(<App />)
+
+    const changeBtn = getByTestId(container, "change-first-text-btn")
+    fireEvent.click(changeBtn!)
+    const getBtn = getByTestId(container, "get-first-text-btn")
+    fireEvent.click(getBtn!)
+
+    expect(addTodoActionRenderCount).toBe(1)
+    expect(todosRenderCount).toBe(2)
+    expect(firstTodoTextRenderCount).toBe(2)
+    expect(container.querySelectorAll("li").length).toBe(1)
+    expect(getByTestId(container, "first-todo-text").textContent).toBe("code")
   })
 })
