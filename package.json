@@ -11,7 +11,8 @@
     "test": "jest --env=jsdom",
     "build": "rollup -c",
     "lint": "eslint . --ext js,ts,tsx",
-    "release": "standard-version"
+    "release": "standard-version",
+    "publish": "pnpm lint && pnpm test && pnpm build && pnpm release && npm publish"
   },
   "repository": {
     "type": "git",
