@@ -1,6 +1,6 @@
 {
   "name": "cohook",
-  "version": "0.5.13",
+  "version": "0.5.14",
   "description": "",
   "main": "lib/cohook.js",
   "types": "lib/types/index.d.ts",
@@ -12,7 +12,7 @@
     "build": "rollup -c",
     "lint": "eslint . --ext js,ts,tsx",
     "release": "standard-version",
-    "publish": "pnpm lint && pnpm test && pnpm build && pnpm release && npm publish"
+    "pub2npm": "pnpm lint && pnpm test && pnpm build && pnpm release && npm publish"
   },
   "repository": {
     "type": "git",
