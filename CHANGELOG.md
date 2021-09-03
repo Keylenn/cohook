@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.13](https://github.com/Keylenn/cohook/compare/v0.5.12...v0.5.13) (2021-09-03)
+
 ### [0.5.12](https://github.com/Keylenn/cohook/compare/v0.5.11...v0.5.12) (2021-09-03)
 
 
