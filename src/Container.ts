@@ -201,7 +201,7 @@ class Container<T> {
         const prop = _changedPropPath.pop()
         const target = _get(wrappedDataRef, _changedPropPath, wrappedDataRef)
         const targetEffectMap = this.getTargetEffectMap(target)
-        const propEffSet = prop !== undefined && targetEffectMap?.get(prop)
+        const propEffSet = prop !== undefined && targetEffectMap?.get(`${prop}`)
 
         // Update TargetEffectMap in real time
         if (targetEffectMap) {
