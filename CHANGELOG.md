@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/Keylenn/cohook/compare/v1.0.4...v1.0.5) (2021-09-07)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* types ([10f8c64](https://github.com/Keylenn/cohook/commit/10f8c648fd2e97950e877ffe222021512c08028a))
+
 ### [1.0.4](https://github.com/Keylenn/cohook/compare/v1.0.3...v1.0.4) (2021-09-07)
 
 ### [1.0.3](https://github.com/Keylenn/cohook/compare/v1.0.2...v1.0.3) (2021-09-07)
