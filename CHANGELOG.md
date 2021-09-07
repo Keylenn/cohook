@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/Keylenn/cohook/compare/v0.5.14...v1.0.1) (2021-09-07)
+
+
+### ⏪ Revert | 回退
+
+* Revert "chore(release): 0.5.14" ([708ebba](https://github.com/Keylenn/cohook/commit/708ebba1da46a509adc7ec84e5b5aba94d2dfe7f))
+
+
+### ✏️ Documentation | 文档
+
+* add feature ([f55a99c](https://github.com/Keylenn/cohook/commit/f55a99c14c24d6a29f22f01e678d097e5a8eb40c))
+* update ([5711173](https://github.com/Keylenn/cohook/commit/5711173ce5cd5f41195821ebb4c03fffdb3932aa))
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* add gitignore ([a7c7a09](https://github.com/Keylenn/cohook/commit/a7c7a096e5fb416915ee953a5eca452d03421af7))
+* change license ([2965d3f](https://github.com/Keylenn/cohook/commit/2965d3fc361578b8829a499b77cf27964d20587a))
+* update version ([164b16c](https://github.com/Keylenn/cohook/commit/164b16c09f920868528661b762c868c14229ee4d))
+
 ### [0.5.13](https://github.com/Keylenn/cohook/compare/v0.5.12...v0.5.13) (2021-09-03)
 
 ### [0.5.12](https://github.com/Keylenn/cohook/compare/v0.5.11...v0.5.12) (2021-09-03)
