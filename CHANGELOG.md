@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/Keylenn/cohook/compare/v1.0.5...v1.0.6) (2021-09-07)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* eslint ([2b162f1](https://github.com/Keylenn/cohook/commit/2b162f12e2866ecbd6e920a38916b0e275a63fed))
+
 ### [1.0.5](https://github.com/Keylenn/cohook/compare/v1.0.4...v1.0.5) (2021-09-07)
 
 
