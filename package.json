@@ -1,6 +1,6 @@
 {
   "name": "cohook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/cohook.js",
   "types": "lib/types/index.d.ts",
