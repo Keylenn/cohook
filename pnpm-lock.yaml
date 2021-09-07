@@ -34,6 +34,7 @@ specifiers:
   react: ^17.0.2
   react-dom: ^17.0.2
   react-test-renderer: ^17.0.2
+  rimraf: ^3.0.2
   rollup: ^2.33.2
   rollup-plugin-babel: ^4.4.0
   rollup-plugin-terser: ^7.0.2
@@ -77,6 +78,7 @@ devDependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-test-renderer: 17.0.2_react@17.0.2
+  rimraf: 3.0.2
   rollup: 2.56.3
   rollup-plugin-babel: 4.4.0_@babel+core@7.15.0+rollup@2.56.3
   rollup-plugin-terser: 7.0.2_rollup@2.56.3
