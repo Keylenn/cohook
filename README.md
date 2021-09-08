@@ -48,8 +48,8 @@ const container = createContainer(0)
 ```
 #### 2. 定义Action
 ```tsx
-const inc = (step = 1) => container.commit((draft) => void (draft.current += step)
-const dec = (step = 1) => container.commit((draft) => void (draft.current -= step)
+const inc = () => container.commit((draft) => void (draft.current += 1)
+const dec = () => container.commit((draft) => void (draft.current -= 1)
 ```
 
 #### 3. 数据状态化和修改
@@ -97,10 +97,10 @@ commit 接受一个函数updater（immer中的[produce](https://immerjs.github.i
 /**
  * 1️⃣ Action
  */
-const dec = (step = 1) => {
+const dec = () => {
   const count = container.getData()
   if(count < 0) return
-  container.commit((draft) => void (draft.current += step)
+  container.commit((draft) => void (draft.current -= 1)
 }
 
 /**
